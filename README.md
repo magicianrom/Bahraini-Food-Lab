@@ -2,6 +2,9 @@
 
 An AI-powered food recognition app designed to help tourists explore Bahrain's culinary culture. Visitors can upload an image of a meal, and the computer vision model detects and identifies recognizable Bahraini and Arabic dishes.
 
+## Classes 
+Asida, Falafel, Halwa, kabsah, luqaimat, Machboos, MandI, Mashawi, Nakhaj, Sambusa, Thareed
+
 ## Project Structure
 
 | File | Purpose |
