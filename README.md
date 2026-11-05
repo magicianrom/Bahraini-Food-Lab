@@ -41,7 +41,7 @@ The model was evaluated on the validation dataset using the following metrics:
 | mAP@50 | 87.09% |
 | mAP@50-95 | 63.89% |
 
-#URL 
+# URL 
 https://bahraini-food-detector.streamlit.app
 
 ## Technologies
