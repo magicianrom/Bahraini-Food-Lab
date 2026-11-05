@@ -22,7 +22,7 @@ st.title("🇧🇭 Bahrain Cuisine Detector")
 # -----------------------------
 @st.cache_resource
 def load_model():
-    return YOLO("best.pt")
+    return YOLO("model/best.pt")
 
 try:
     model = load_model()
