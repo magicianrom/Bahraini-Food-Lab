@@ -1,38 +1,72 @@
 # Bahraini-Food-Lab
-An AI-powered food recognition app designed to help tourists explore Bahrain's culinary culture. 
+
+An AI-powered food recognition app designed to help tourists explore Bahrain's culinary culture. Visitors can upload an image of a meal, and the computer vision model detects and identifies recognizable Bahraini and Arabic dishes.
 
 ## Project Structure
 
 | File | Purpose |
 |---|---|
-| `notebook/Bahraini_Food.ipynb` | Evaluating pretrained Hugging Face models for restaurant review sentiment analysis. |
-| `streamlit/BH_food_detection.py` | Streamlit application: accepts restaurant reviews and predicts sentiment and review category. |
+| `notebook/Bahraini_Food.ipynb` | Notebook for preparing the dataset, training the YOLO model, and evaluating its performance. |
+| `streamlit/BH_food_detection.py` | Streamlit application that allows users to upload food images and view detection results. |
+| `models/best.pt` | Trained YOLO model weights used for food detection. |
 | `requirements.txt` | Python dependencies required to run the application. |
 
 ## How It Works
 
-1. Enter a restaurant review into the Streamlit application.
+1. Upload a food image through the Streamlit application.
+2. The trained YOLO model analyzes the image and detects recognizable food items.
+3. Bounding boxes are drawn around the detected dishes.
+4. The application displays the detected food names and their confidence scores.
 
-2. The sentiment analysis model classifies the review as positive, negative, or neutral.
+## Model Used
 
-3. The zero-shot classification model identifies the main topic of the review, such as Food Quality, Service, Price, or Cleanliness.
-
-4. Both predictions and their confidence scores are displayed.
-
-## Models Used
-
-| Task | Hugging Face Model |
+| Task | Model |
 |---|---|
-| Sentiment Analysis | `abhiprd20/nlp-sentiment-model` |
-| Zero-Shot Classification | `MoritzLaurer/deberta-v3-base-zeroshot-v2.0` |
+| Food Detection | YOLO26 Large (`yolo26l.pt`) |
+| Trained Weights | `best.pt` |
+
+The model was fine-tuned using a custom Arabic food image dataset from Roboflow.
+
+## Model Evaluation
+
+The model was evaluated on the validation dataset using the following metrics:
+
+| Metric | Score |
+|---|---:|
+| Precision | 81.84% |
+| Recall | 82.85% |
+| mAP@50 | 87.09% |
+| mAP@50-95 | 63.89% |
 
 ## Technologies
 
 - Python
-- Hugging Face Transformers
+- YOLO (Ultralytics)
 - PyTorch
+- OpenCV
 - Streamlit
+- Roboflow
 - Git LFS
 
-## Live Demo
-https://restaurant-analyzer.streamlit.app
+## Run Locally
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Install the dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the Streamlit application:
+
+   ```bash
+   streamlit run streamlit/BH_food_detection.py
+   ```
+
+**Note:** The trained model file `best.pt` must be available at the path specified in the application.
+
